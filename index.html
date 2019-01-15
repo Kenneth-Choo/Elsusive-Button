@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Try to catch me</title>
+	<style>
+   		button {
+   			padding: 20px;
+   			background-color: deeppink;
+   			color: white;
+   			border-radius: 8px;
+   			border: 1px solid pink;
+   			font-size: 36px;
+   		}
+
+   		.mouseovered{
+   			color: black;
+		}
+
+		h1 {
+			text-align: center;
+			color: blue;
+		}
+
+		h2 {
+			text-align: center;
+			color:purple;
+		}
+
+   </style>
+</head>
+<body>
+	<h1> GAME: TRY TO CATCH ME </h1>
+	<h2> Instructions: <br/>
+	Try to click on me </h2>
+	<div id="runner">
+	<button id="my-button" >Click Me ;) </button>
+
+	<p id="replace">
+		 
+	</p>
+</div>
+
+	<script>
+		//discontinued
+		function randomColor(){
+			const r = Math.floor(Math.random() * 255);
+			const g = Math.floor(Math.random() * 255);
+			const b = Math.floor(Math.random() * 255);
+			return 'rgb(' + r + ',' + g + ',' + b + ')'
+		}
+
+		//Javascript goes here
+		const button = document.getElementById('my-button');
+
+
+		const replace = document.getElementById('replace');
+		let count = 1;
+		button.onmouseover = function (){
+			button.classList.add('mouseovered');
+			console.log('mouseover!');
+			if (count < 10){
+				randomRunner();
+				console.log(count);
+				count ++;
+			} else {
+				console.log('stop');
+				replace.innerHTML = "You caught me!";
+				button.onclick = function (){
+					button.style.backgroundColor = randomColor();
+					location.href = "https://www.youtube.com/watch?v=SMWi7CLoZ2Q";
+				}
+			}
+		}
+
+		button.onmouseout = function (){
+			button.classList.remove('mouseovered');
+		}
+
+		//function for moving the button
+		const running = document.getElementById('runner');
+		function randomRunner() {
+			const right = Math.floor(Math.random()*500) + 'px';
+			const bottom = Math.floor(Math.random()*500) + 'px';
+			running.style.position = 'fixed';
+			running.style.right = right;
+			running.style.bottom = bottom;
+			}
+
+		//changes to words
+		const header = document.querySelector('h1')
+
+	</script>
+</body>
+</html>
